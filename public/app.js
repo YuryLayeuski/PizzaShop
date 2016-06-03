@@ -1,0 +1,12 @@
+
+
+function something()
+{
+	alert('Hello');
+}
+
+
+
+
+
+
