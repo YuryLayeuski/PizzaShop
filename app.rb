@@ -22,19 +22,26 @@ get '/About' do
 	end
 
 post '/place_order' do
-	@order = Order.create params[:orders]
+	@order = Order.create params[:order]
 	erb :order_placed
 end
 
 
 post '/cart' do
-	@orders_input = params[:orders] 
+#get list of parametrs and parse them 
+	@orders_input = params[:orders_input] 
 	@items = parse_orders_input @orders_input
 
+#output message what cart is empty
+	if @items.length == 0 
+		return erb :cart_is_empty
+	end
+
+#output list of items in cart
 	@items.each do |item|
 		item[0] = Product.find(item[0])     # id, cnt
 	end
-
+#return view by default
   	erb :cart
 end
 
