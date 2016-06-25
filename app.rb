@@ -8,6 +8,8 @@ set :database, "sqlite3:pizzashop.db"
 
 class Product < ActiveRecord::Base
 end
+class Order < ActiveRecord::Base
+end
 
 
 get '/' do
@@ -18,6 +20,12 @@ end
 get '/About' do
 	erb :about
 	end
+
+post '/place_order' do
+	@order = Order.create params[:orders_input]
+	erb :order_placed
+end
+
 
 post '/cart' do
 	@orders_input = params[:orders] 
