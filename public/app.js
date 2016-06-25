@@ -71,11 +71,17 @@ function cart_get_orders()
 	return orders;
 }
 
-function cancel_order() {
+function cancel_order() 
+{
 
-alert('aaa');
+window.localStorage.clear();
+
+update_orders_input();
+update_orders_button();
+
+$('#cart').text('Your cart is empty');
+
 return false
-
 }
 
 
