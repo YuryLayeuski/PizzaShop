@@ -22,7 +22,7 @@ get '/About' do
 	end
 
 post '/place_order' do
-	@order = Order.create params[:orders_input]
+	@order = Order.create params[:orders]
 	erb :order_placed
 end
 
